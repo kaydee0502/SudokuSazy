@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <style>
+
+      .fc{
+
+        margin:5px;
+      }
+
+
+    </style>
+
+
+  </head>
+<body>
+
+<h1 style="text-align: center;">Upload a Scanned Sudoku</h1>
+
+<div id = "class" style="display: flex;justify-content:center">
+<form action="{{ url_for('out') }}", method="POST" enctype="multipart/form-data">
+  <label for="img" class = "fc">Select image:</label>
+  <input type="file" id="img" name="img" class = "fc">
+  <input type="submit", class="fc">
+</form>
+</div>
+
+
+
+</body>
+</html>
