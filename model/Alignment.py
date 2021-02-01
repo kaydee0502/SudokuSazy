@@ -19,8 +19,8 @@ class ChangePerspective():
         return res2, res, mask
     
 
-    def readim(self, name):
-        m = cv2.imread(name)
+    def readim(self, path,name):
+        m = cv2.imread(path)
         mo, mg, mask = self.prepro(m)
         r,mask = self.get_cnt(mg, mask)
         corners = self.get_corners(mask)
@@ -40,6 +40,10 @@ class ChangePerspective():
         input_pts = np.float32([pA, pB, pC, pD])
         M = cv2.getPerspectiveTransform(input_pts,output_pts)
         out = cv2.warpPerspective(mo,M,(W, H),flags=cv2.INTER_LINEAR)
+        fpath = "static/images/"
+        fname = "edited_" + name
+        print(fpath+fname)
+        cv2.imwrite(fpath+fname,out)
         return out
     
     def get_cnt(self,mg,mask):
@@ -73,7 +77,7 @@ class ChangePerspective():
     def closest_node(self, node, nodes):
         nodes = np.asarray(nodes)
         dist_2 = (nodes - node)**2
-        print(dist_2.reshape(4,2))
+        
         n = np.sum(dist_2.astype("int"),axis=-1)
     
         return np.argmin(n)
