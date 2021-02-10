@@ -13,7 +13,19 @@
         margin-top: auto;
         margin-bottom :auto;
         border-left: 30px solid black;
-        }
+        };
+
+
+        .clickMe {
+    -moz-appearance: button;
+    -ms-appearance: button;
+    -o-appearance: button;
+    -webkit-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: #000;
+    padding: 0.2em 0.4em;
+        }     
 
     </style>
 
@@ -31,6 +43,11 @@
 <div class="arrow-right"></div>
 <img src = "{{ out }}" alt = "out" height = "500", width = "500">
 </div>
+
+<div id = "fbuts">
+<a class="clickMe" href="{{ url_for('index') }}">Retry</a>
+<a class="clickMe" href="{{ url_for('index') }}">Proceed</a>
+
 
 </body>
 </html>

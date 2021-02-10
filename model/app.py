@@ -21,6 +21,11 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 @app.route("/")
+def home():
+    return redirect(url_for("index"))
+
+
+@app.route("/home")
 def index():
     return render_template("index.html")
 
