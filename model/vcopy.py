@@ -13,7 +13,7 @@ import numpy as np
 class Model:
     def __init__(self,path):
         self.image = cv2.imread(path)
-        self.model = keras.models.load_model("drec")
+        self.model = keras.models.load_model("drecv2")
         cells = self.chop()
         self.predictions = self.predict(cells)
         
