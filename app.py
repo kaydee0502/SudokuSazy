@@ -5,7 +5,7 @@ Created on Thu Jan 28 17:02:27 2021
 
 @author: kaydee
 """
-import flask
+#import flask
 from flask import Flask, redirect, url_for, request, render_template, send_file
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
@@ -20,7 +20,6 @@ PATH = ""
 app = Flask(__name__) 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
 @app.route("/")
 def home():
     return redirect(url_for("index"))
@@ -30,7 +29,8 @@ def home():
 def index():
     return render_template("index.html")
 
-@app.route("/results")
+
+@app.route("/results") 
 def res():
     global PATH
     vM1= vModel(PATH)
