@@ -2,31 +2,47 @@
 <html>
   <head>
 
-    <style>
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  
 
-      .fc{
+   <style>
+     html, body, pre, code, kbd, samp {
+         font-family: 'Press Start 2P', cursive;
+     }
+     .fc{
 
-        margin:5px;
+      margin:5px;
       }
-
-
-    </style>
-
-
+   </style>
   </head>
 <body>
 
 <h1 style="text-align: center;">Upload a Scanned Sudoku</h1>
 
-<div id = "class" style="display: flex;justify-content:center">
-<form action="{{ url_for('out') }}", method="POST" enctype="multipart/form-data">
-  <label for="img" class = "fc">Select image:</label>
-  <input type="file" id="img" name="img" class = "fc">
-  <input type="submit", class="fc">
-</form>
+<div style= "margin: 25px;" >
+<div class="nes-container with-title is-centered">
+  <p class="title">Scanner</p>
+  <div id = "class" style="display: flex;justify-content:center">
+
+    <form action="{{ url_for('out') }}", method="POST" enctype="multipart/form-data">
+      <label for="img" class = "fc">Select image:</label>
+      <label class="nes-btn" id="labelimg">Upload<input type="file" id="img" name="img" class="nes-btn" onchange="Fupload()"></label>
+      <input type="submit", class="nes-btn is-primary">
+    </form>
+    </div>
+</div>
 </div>
 
 
 
+<script>
+
+function Fupload(){
+  console.log(5);
+  document.getElementById("labelimg").classList.add("is-success");
+}
+
+</script>
 </body>
 </html>
