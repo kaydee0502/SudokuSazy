@@ -2,9 +2,15 @@
 <html>
   <head>
 
-    <style>
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  
 
-        .arrow-right {
+   <style>
+     html, body, pre, code, kbd, samp {
+         font-family: 'Press Start 2P', cursive;
+     }
+     .arrow-right {
         width: 0; 
         height: 0; 
         border-top: 30px solid transparent;
@@ -27,21 +33,23 @@
     padding: 0.2em 0.4em;
         }     
 
-    </style>
-
-
+   </style>
   </head>
+
+   
 <body>
 
 <h1 style="text-align: center;">Result</h1>
 
+<div style="margin:25px;">
+<div class="nes-container with-title is-centered">
+  <p class = "title">Change Perspective</p>
 <div id = "ims" style="display: flex;justify-content:center">
-
-
-
-<img src = "{{ inp }}"  alt = "in",height = "500", width = "500">
+<img src = "{{ inp }}"  alt = "in" style="width:auto;height:500px;">
 <div class="arrow-right"></div>
-<img src = "{{ out }}" alt = "out" height = "500", width = "500">
+<img src = "{{ out }}" alt = "out" style="width:auto;height:500px;">
+</div>
+</div>
 </div>
 
 <div id = "fbuts">
