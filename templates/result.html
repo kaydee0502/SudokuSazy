@@ -45,17 +45,17 @@
 <div class="nes-container with-title is-centered">
   <p class = "title">Change Perspective</p>
 <div id = "ims" style="display: flex;justify-content:center">
-<img src = "{{ inp }}"  alt = "in" style="width:auto;height:500px;">
+<img src = "{{ inp }}"  alt = "in" style="width:auto;height:400px;">
 <div class="arrow-right"></div>
-<img src = "{{ out }}" alt = "out" style="width:auto;height:500px;">
+<img src = "{{ out }}" alt = "out" style="width:auto;height:400px;">
 </div>
 </div>
 </div>
 
-<div id = "fbuts">
-<a class="clickMe" href="{{ url_for('index') }}">Retry</a>
-<a class="clickMe" href="{{ url_for('res') }}">Proceed</a>
-
+<div id = "fbuts" style="display: flex;justify-content:center;">
+<a class="nes-btn" href="{{ url_for('index') }}" style="margin: 10px;">Retry</a>
+<a class="nes-btn" href="{{ url_for('res') }}" style="margin: 10px;">Proceed</a>
+</div>
 
 </body>
 </html>
