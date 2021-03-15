@@ -4,15 +4,11 @@ WORKDIR /app
 
 ADD . /app
 
-RUN apt update
+RUN sudosudo apt-get install -y libgl1-mesa-dev apt-get update
 
-RUN apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
-
-RUN apt-get install -y libgl1-mesa-de
-
-COPY . /app
 
 EXPOSE 5000
 
