@@ -12,6 +12,7 @@ from werkzeug.datastructures import FileStorage
 import os
 from Alignment import ChangePerspective
 from vcopy import Model as vModel
+#local changes
 
 UPLOAD_FOLDER = 'static/images/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
