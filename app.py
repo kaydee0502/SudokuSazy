@@ -34,9 +34,9 @@ def index():
 @app.route("/results") 
 def res():
     global PATH
-    vM1= vModel(PATH)
-    sudoku = vM1.predictions
-    return str(sudoku)
+    vmod= vModel(PATH)
+    sudoku = vmod.predictions
+    return render_template("review.html",preds = sudoku)
     
     
     
