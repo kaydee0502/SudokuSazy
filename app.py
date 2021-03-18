@@ -6,12 +6,13 @@ Created on Thu Jan 28 17:02:27 2021
 @author: kaydee
 """
 #import flask
-from flask import Flask, redirect, url_for, request, render_template, send_file
+from flask import Flask, redirect, url_for, request, render_template, send_file, jsonify
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 import os
 from Alignment import ChangePerspective
 from vcopy import Model as vModel
+import json
 #local changes
 
 UPLOAD_FOLDER = 'static/images/'
@@ -34,9 +35,18 @@ def index():
 @app.route("/results") 
 def res():
     global PATH
-    vM1= vModel(PATH)
-    sudoku = vM1.predictions
-    return str(sudoku)
+    if PATH == "":
+        # TODO : add custom error mesage - Invalid PATH
+        return render_template("index.html")
+    vmod= vModel(PATH)
+    sudoku = vmod.predictions
+    print(sudoku)
+    suddict = {'vals':"".join(map(str,sudoku))}
+    print(suddict,PATH)
+    with open("templates/sudoku.json","w") as f:
+       json.dump(suddict,f)
+       print("JSON written")
+    return render_template("review.html",preds = [suddict])
     
     
     
