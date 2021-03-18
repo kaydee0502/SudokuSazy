@@ -7,6 +7,7 @@
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
    <style type="text/css">
     html, body, pre, code, kbd, samp {
@@ -264,10 +265,9 @@
      
 
      <script>
-        var pred = '{{ preds }}'.split(" ");
-
-     
-        console.log(pred);
+        var obj = JSON.parse('{{ preds | tojson | safe }}');
+        var sud = obj[0];
+        alert(sud.vals);
        
     </script>
 
