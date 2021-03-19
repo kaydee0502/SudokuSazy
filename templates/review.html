@@ -123,10 +123,10 @@
      <td><input id="cell-2"  type="text"></td>
     
     -->
-   <h3 style="text-align: center;margin: 20px;;">Review and commit corrections</h3>
+   <h3 style="text-align: center;margin: 10px;;">Review and commit corrections</h3>
     <div class="container" style="display: flex;justify-content:center;">
       
-        <div class = "nes-container with-title" style="padding-left: 200px;padding-right: 200px;">
+        <div class = "nes-container with-title" style="padding-left: 200px;padding-right: 200px;margin-bottom:2%;">
         <p class="title">Sudoku</p>
 
         <form action="{{ url_for('solve') }}", method="POST" enctype="multipart/form-data">
@@ -260,18 +260,16 @@
           
           
         </table>
-        <a  href="{{ url_for('solve') }}" style="margin: 10px;"><input type="submit", class="nes-btn is-primary"></a>
+        <div id = "fbuts" style="display: flex;justify-content:center;">
+          <input type="submit" class="nes-btn is-primary" value = 'Done! Flank ahead!' style="width:100%;margin-top:5%">
+        </div>
+  
       </form>
     </div>
   
       </div>
   
-      <div id = "fbuts" style="display: flex;justify-content:center;">
-        <a class="nes-btn" href="{{ url_for('solve') }}" style="margin: 10px;">Done! Flank ahead!</a>
-       <!-- <a class="nes-btn" href="{{ url_for('res') }}" style="margin: 10px;">Proceed</a> -->
-        </div>
      
-
      <script>
         var obj = JSON.parse('{{ preds | tojson | safe }}');
         var sud = obj[0];
