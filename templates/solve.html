@@ -114,22 +114,19 @@
     #cell-60, #cell-69, #cell-78 { border-left:   2px solid #000000; }
 
   </style>
-  </head>
-  <body>
 
-    <!--template
-    
-     <td><input id="cell-1"  type="text" value="3" disabled></td>
-     <td><input id="cell-2"  type="text"></td>
-    
-    -->
-   <h3 style="text-align: center;margin: 10px;;">Review and commit corrections</h3>
+  <body>
+    <h3 style="text-align: center;margin: 10px;">Solve!!</h3>
+
+
+
+
     <div class="container" style="display: flex;justify-content:center;">
       
         <div class = "nes-container with-title" style="padding-left: 200px;padding-right: 200px;margin-bottom:2%;">
         <p class="title">Sudoku</p>
 
-        <form action="{{ url_for('solve') }}", method="POST" enctype="multipart/form-data">
+       
         <table id="grid">
   
           <tr>
@@ -260,18 +257,16 @@
           
           
         </table>
-        <div id = "fbuts" style="display: flex;justify-content:center;">
-          <input type="submit" class="nes-btn is-primary" value = 'Done! Flank ahead!' style="width:100%;margin-top:5%">
-        </div>
+        
   
-      </form>
+      
     </div>
   
       </div>
-  
-     
-     <script>
-        var obj = JSON.parse('{{ preds | tojson | safe }}');
+
+      <script>
+
+var obj = JSON.parse('{{ final_sudoku | tojson | safe }}');
         var sud = obj[0];
         var sudvals = sud.vals;
         console.log(sudvals);
@@ -280,12 +275,14 @@
         for(let x of sudvals){
 
           if (x==="0"){
-            //document.getElementById("cell-"+cellid.toString()).disabled = true;
+            
             console.log("passed");
           }
           else{
 
             document.getElementById("cell-"+cellid.toString()).setAttribute("value",x);
+            document.getElementById("cell-"+cellid.toString()).disabled = true;
+            document.getElementById("cell-"+cellid.toString()).style.color = "red";
           }
           document.getElementById("cell-"+cellid.toString()).setAttribute("name","c"+cellid.toString());
           cellid++;
@@ -293,12 +290,10 @@
 
         }
 
-       
-    </script>
 
-  
+
+
+      </script>
 
   </body>
-
-
-  </html>
+  </head>

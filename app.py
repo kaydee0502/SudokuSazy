@@ -73,7 +73,16 @@ def out():
 @app.route("/solve",methods=["GET","POST"])
 def solve():
     if request.method == "POST":
-        return "pass"
+        temp = ""
+        for i in range(81):
+            gres = request.form.get("c"+str(i))
+
+            if gres == "":
+                temp += "0"
+            else:
+                temp+=gres
+
+        return render_template("solve.html",final_sudoku = [{"vals":temp}])
     return "fail"
 
 
