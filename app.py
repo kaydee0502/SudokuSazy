@@ -81,8 +81,8 @@ def solve():
                 temp += "0"
             else:
                 temp+=gres
-                
-        return temp
+
+        return render_template("solve.html",final_sudoku = [{"vals":temp}])
     return "fail"
 
 
