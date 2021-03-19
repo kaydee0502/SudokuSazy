@@ -70,7 +70,11 @@ def out():
         return render_template("result.html",inp = rel_image_path+sfname, out = rel_image_path+edited_sfname)
     return "no"
     
-
+@app.route("/solve",methods=["GET","POST"])
+def solve():
+    if request.method == "POST":
+        return "pass"
+    return "fail"
 
 
 if __name__ == "__main__":
