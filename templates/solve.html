@@ -266,6 +266,25 @@
 
       <script>
 
+        function toMat(sud){
+         let board = []
+          for (let i = 0;i <81;i+=9){
+
+              board.push(sud.slice(i,i+9));
+              
+
+          }
+            console.log(board);
+
+            return board;
+
+
+        }
+
+
+
+
+
 var obj = JSON.parse('{{ final_sudoku | tojson | safe }}');
         var sud = obj[0];
         var sudvals = sud.vals;
@@ -289,6 +308,8 @@ var obj = JSON.parse('{{ final_sudoku | tojson | safe }}');
 
 
         }
+
+let board = toMat(sudvals);
 
 
 
