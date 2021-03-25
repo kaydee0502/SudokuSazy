@@ -7,6 +7,7 @@ Created on Thu Jan 28 17:02:27 2021
 """
 #import flask
 from flask import Flask, redirect, url_for, request, render_template, send_file, jsonify
+from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 import os
@@ -19,8 +20,12 @@ UPLOAD_FOLDER = 'static/images/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 PATH = ""
 
+
+
 app = Flask(__name__) 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['CORS_HEADERS'] = "Content-Type"
+cors = CORS(app)
 
 @app.route("/")
 def home():
@@ -85,6 +90,14 @@ def solve():
         return render_template("solve.html",final_sudoku = [{"vals":temp}])
     return "fail"
 
+@app.route("/api")
+def api():
+    return render_template("api.html")
+
+@app.route("/api/get_json")
+@cross_origin()
+def gjson():
+    return jsonify(id = "kaydee")
 
 if __name__ == "__main__":
     app.run(debug = True,host="0.0.0.0")
