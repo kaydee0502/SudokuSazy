@@ -4,9 +4,10 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+jobs:
+  include:
 # command to run tests
-script:
-  - python app.py
+  - script: python app.py
 notifications:
   email:
     recipients:
