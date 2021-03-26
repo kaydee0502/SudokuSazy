@@ -7,3 +7,14 @@ install:
 # command to run tests
 script:
   - pytest
+notifications:
+  email:
+    recipients:
+      - aakashv.8292@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
+sudo: required
+services:
+  - docker
+before_install:
+  -docker build -f Dockerfile.dev .
