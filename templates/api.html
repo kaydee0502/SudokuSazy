@@ -11,7 +11,7 @@
     <a href = "{{ url_for('gjson') }}">next</a>
 
 
-    <form action="{{ url_for('gjson') }}", method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('gjson') }}", method="POST" id="form1" enctype="multipart/form-data">
         <label for="img" class = "fc">Select image:</label>
         <label class="nes-btn" id="labelimg"><span>Upload</span><input type="file" id="img"  name="img" class="nes-btn"></label>
         <input type="submit" class="nes-btn is-primary" value = "Proceed!">
@@ -20,14 +20,41 @@
 
 
     <script>
-        async function getres(){
-
-            let rr = await $.ajax({url:'http://127.0.0.1/5000/api/get_json',type:"GET"})
-            console.log(rr);
 
 
-        }
-getres()
+document.getElementById("form1").onsubmit = async function(e) {
+
+
+e.preventDefault();  // prevent reload
+
+
+var formData = new FormData(this);
+    
+ let rr = await   $.ajax({
+      url: "http://127.0.0.1:5000/api/get_json",
+      type: "POST",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false
+    });
+
+    console.log(rr)
+    
+
+// let rr = await $.ajax({url:'http://127.0.0.1:5000/fun',type:"GET"})
+// console.log(rr);
+
+
+
+
+
+
+
+
+}
+
+    
 
     </script>
 </body>
