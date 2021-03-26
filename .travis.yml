@@ -14,3 +14,6 @@ notifications:
       - aakashv.8292@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+after_script:
+  - deploy:
+      skip_cleanup: true
