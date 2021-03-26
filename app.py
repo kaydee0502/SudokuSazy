@@ -116,4 +116,4 @@ def gjson():
     return jsonify(predictions = "".join(map(str,vModel_api.predictions)))
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug=True)
