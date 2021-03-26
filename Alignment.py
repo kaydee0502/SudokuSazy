@@ -19,8 +19,12 @@ class ChangePerspective():
         return res2, res, mask
     
 
-    def readim(self, path,name):
-        m = cv2.imread(path)
+    def readim(self, path,name=None):
+        if isinstance(path, str):
+            m = cv2.imread(path)
+        else:
+            m = path
+
         mo, mg, mask = self.prepro(m)
         r,mask = self.get_cnt(mg, mask)
         corners = self.get_corners(mask)
@@ -40,12 +44,18 @@ class ChangePerspective():
         input_pts = np.float32([pA, pB, pC, pD])
         M = cv2.getPerspectiveTransform(input_pts,output_pts)
         out = cv2.warpPerspective(mo,M,(W, H),flags=cv2.INTER_LINEAR)
-        fpath = "static/images/"
-        fname = "edited_" + name
-        print(fpath+fname)
-        cv2.imwrite(fpath+fname,out)
+        
+        #save img
+        if isinstance(path, str):
+            fpath = "static/images/"
+            fname = "edited_" + name
+            print(fpath+fname)
+            self.save_img(fpath,fname,out)
         return out
     
+    def save_img(self,fpath,fname,out):
+        cv2.imwrite(fpath+fname,out)
+
     def get_cnt(self,mg,mask):
         thresh = cv2.adaptiveThreshold(mg,255,0,1,19,2)
         contour,hier = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)

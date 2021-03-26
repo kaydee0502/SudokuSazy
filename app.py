@@ -14,6 +14,8 @@ import os
 from Alignment import ChangePerspective
 from vcopy import Model as vModel
 import json
+import numpy as np
+import cv2
 #local changes
 
 UPLOAD_FOLDER = 'static/images/'
@@ -94,10 +96,24 @@ def solve():
 def api():
     return render_template("api.html")
 
-@app.route("/api/get_json")
+@app.route("/api/get_json",methods=["GET","POST"])
 @cross_origin()
 def gjson():
-    return jsonify(id = "kaydee")
+    if request.method == "POST":
+        file = request.files['img'].read()
+        npimg = np.fromstring(file, np.uint8)
+        img = cv2.imdecode(npimg,cv2.IMREAD_COLOR) 
+        changePerspectiveImg = ChangePerspective()
+        img = changePerspectiveImg.readim(img)
+
+        vModel_api = vModel(img)
+    else:
+        return "No file found!"
+
+
+
+
+    return jsonify(predictions = "".join(map(str,vModel_api.predictions)))
 
 if __name__ == "__main__":
     app.run(debug = True)
