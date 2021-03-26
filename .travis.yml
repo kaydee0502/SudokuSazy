@@ -2,6 +2,7 @@ language: python
 python:
   - "3.8.5"      # current default Python on Travis CI
 # command to install dependencies
+sudo pip3 install --upgrade pip
 install:
   - pip install -r requirements.txt
 language: node_js
