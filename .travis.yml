@@ -5,9 +5,6 @@ python:
 install:
 sudo pip3 install --upgrade pip
   - pip install -r requirements.txt
-language: node_js
-node_js:
-  - node
 notifications:
   email:
     recipients:
