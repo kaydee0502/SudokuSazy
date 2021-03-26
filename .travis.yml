@@ -3,7 +3,7 @@ python:
   - "3.8.5"      # current default Python on Travis CI
 # command to install dependencies
 install:
-sudo pip3 install --upgrade pip
+  - sudo pip3 install --upgrade pip
   - pip install -r requirements.txt
 notifications:
   email:
