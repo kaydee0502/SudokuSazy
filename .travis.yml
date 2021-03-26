@@ -4,8 +4,6 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-jobs:
-  include:
 # command to run tests
   - script: python app.py
 notifications:
@@ -14,3 +12,8 @@ notifications:
       - aakashv.8292@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+after_script:
+  # start the web app
+  - |
+    python app.py &
+    APP_PID=$!
