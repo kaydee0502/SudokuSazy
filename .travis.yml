@@ -7,14 +7,11 @@ install:
 # command to run tests
 script: 
   - python app.py
+env:
+  - FLASK_ENV=development
 notifications:
   email:
     recipients:
       - aakashv.8292@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
-after_script:
-  # start the web app
-  - |
-    python app.py &
-    APP_PID=$!
