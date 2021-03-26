@@ -2,8 +2,13 @@ language: python
 python:
   - "3.8.5"      # current default Python on Travis CI
 # command to install dependencies
+before_install:
+  - python -m pip install --upgrade pip
 install:
-  - pip install -r requirements.txt
+  - pip install --user -r requirements.txt --use-feature=2020-resolver
+# command to run tests
+script:
+  - python app.py
 notifications:
   email:
     recipients:
