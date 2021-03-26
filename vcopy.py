@@ -12,7 +12,12 @@ import numpy as np
 
 class Model:
     def __init__(self,path):
-        self.image = cv2.imread(path)
+        if isinstance(path,str):
+            self.image = cv2.imread(path)
+        else:
+            self.image = path
+
+        
         self.model = keras.models.load_model("drecv2")
         cells = self.chop()
         self.predictions = self.predict(cells)
