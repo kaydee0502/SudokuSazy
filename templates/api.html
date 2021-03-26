@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  
+</head>
+<body>
+
+    <a href = "{{ url_for('gjson') }}">next</a>
+
+
+
+    <script>
+        async function getres(){
+
+            let rr = await $.ajax({url:'http://127.0.0.1/5000/api/get_json',type:"GET"})
+            console.log(rr);
+
+
+        }
+getres()
+
+    </script>
+</body>
+</html>

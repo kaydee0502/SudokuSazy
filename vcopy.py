@@ -22,6 +22,7 @@ class Model:
     def chop(self):
         cells = []
         sud = self.image
+        print(type(sud))
         sud = cv2.cvtColor(sud,cv2.COLOR_BGR2GRAY)
         #plt.imshow(sud)
         (thresh, sud) = cv2.threshold(sud, 150, 255, cv2.THRESH_BINARY_INV)
