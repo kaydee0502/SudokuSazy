@@ -93,6 +93,7 @@ def solve():
     return "fail"
 
 @app.route("/api")
+@cross_origin()
 def api():
     return render_template("api.html")
 
