@@ -10,11 +10,6 @@ script:
   - python -m pytest
 env:
   - FLASK_ENV=development
-services:
-  - docker
-
-before_install:
-- docker pull aakashv8900/Sudoku_v1
 notifications:
   email:
     recipients:
