@@ -1,4 +1,3 @@
-  
 language: python
 python:
   - "3.8.5"      # current default Python on Travis CI
