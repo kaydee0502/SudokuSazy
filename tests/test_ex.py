@@ -1,4 +1,5 @@
-def test_example(app,client):
+def test_redirection(app,client):
     print(client)
-    response = client.post("/")
-    assert response.status_code == 405
+    # checking redirection
+    response = client.get("/")
+    assert response.status_code == 302
