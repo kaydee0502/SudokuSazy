@@ -34,7 +34,7 @@ def home():
     return redirect(url_for("index"))
 
 
-@app.route("/home")
+@app.route("/home",methods=["GET","POST"])
 def index():
     return render_template("index.html")
 
