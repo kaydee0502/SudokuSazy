@@ -8,3 +8,4 @@ numpy==1.19.2
 pyOpenSSL==20.0.1
 six==1.12.0
 tensorflow==2.2.0
+gunicorn==20.1.0
