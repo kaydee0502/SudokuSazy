@@ -274,7 +274,7 @@
         var obj = JSON.parse('{{ preds | tojson | safe }}');
         var sud = obj[0];
         var sudvals = sud.vals;
-        console.log(sudvals);
+        console.log(sud);
 
         let cellid = 0;
         for(let x of sudvals){

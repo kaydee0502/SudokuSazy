@@ -47,8 +47,12 @@ def res():
         return render_template("index.html")
     vmod= vModel(PATH)
     sudoku = vmod.predictions
-    print(sudoku)
-    suddict = {'vals':"".join(map(str,sudoku))}
+    sudoku_vals = sudoku.argmax(axis=1)
+    sudoku_confidence_levels = sudoku.max(axis=1)
+    sud_bools = sudoku_confidence_levels > 0.9
+    sudoku_thresholded = sudoku_vals * sud_bools
+    print(sudoku_confidence_levels)
+    suddict = {'vals':"".join(map(str,sudoku_vals)), 'vals_with_conf':"".join(map(str,sudoku_thresholded))}
     print(suddict,PATH)
     with open("templates/sudoku.json","w") as f:
        json.dump(suddict,f)
@@ -117,4 +121,4 @@ def gjson():
     return jsonify(predictions = "".join(map(str,vModel_api.predictions)))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True)
