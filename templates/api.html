@@ -31,7 +31,7 @@ e.preventDefault();  // prevent reload
 var formData = new FormData(this);
     
  let rr = await   $.ajax({
-      url: "http://127.0.0.1:5000/api/get_json",
+      url: "/api/get_json",
       type: "POST",
       data: formData,
       cache: false,
