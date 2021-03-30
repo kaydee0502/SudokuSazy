@@ -19,7 +19,7 @@ class Model:
 
         
         self.model = keras.models.load_model("drecv3.h5")
-        cells = self.chop()
+        cells = self.chop(True)
         self.predictions = self.predict(cells)
         
         
