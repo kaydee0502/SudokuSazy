@@ -23,6 +23,20 @@ class Model:
         self.predictions = self.predict(cells)
         
         
+    def check_corner(self, im):
+        '''
+        Check pixel values at the corners of the image.
+
+        Parameters
+        -----------
+        im : image represented in 2darray form.
+
+        Return
+        ------
+        Array of pixel values at all 4 corners.
+        '''
+    
+        return [im[0][0],im[0][-1],im[-1][0],im[-1][-1]]
         
     def chop(self,doProc = False):
         
@@ -61,6 +75,9 @@ class Model:
                         
                         cv2.fillPoly(t2, pts =[maxc], color=255)
                         im = cv2.bitwise_and(t,t2)
+                    
+                    if sum(self.check_corner(im)) != 0:
+                        im *= 0
                
                 cells.append(im)
                 #plt.imshow(im)
