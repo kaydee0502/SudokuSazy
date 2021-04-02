@@ -38,51 +38,64 @@ class Model:
     
         return [im[0][0],im[0][-1],im[-1][0],im[-1][-1]]
         
+    def check_edge(self,x,y,w,h):
+        if x == 0 or y == 0 or x+w == 28 or y+h == 28:
+            return False
+        return True
+        
     def chop(self,doProc = False):
         
         cells = []
         sud = self.image
-        print(type(sud))
+        #print(type(sud))
         sud = cv2.cvtColor(sud,cv2.COLOR_BGR2GRAY)
         #plt.imshow(sud)
-        (thresh, sud) = cv2.threshold(sud, 150, 255, cv2.THRESH_BINARY_INV)
+        (thresh, sud) = cv2.threshold(sud, 127, 255, cv2.THRESH_BINARY_INV)
+
+        
 
         cells = []
-
+        doProc = True
         for r in range(0,252,28):
             for c in range(0,252,28):
                 im = sud[r:r+28][:,c:c+28]
-                #pad = np.zeros(im.shape)
-                centroid = sud[r+5:r+20][:,c+5:c+20]
-                #plt.imshow(centroid)
                 
-                if doProc:    
-                
-                    contours, hierarchy = cv2.findContours(im,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+                if doProc:
+                    #pad = np.zeros(im.shape)
+                    centroid = sud[r+5:r+20][:,c+5:c+20]
+                    #plt.imshow(centroid)
+
+
+                    plt.title(sum(centroid.ravel()))
+                    
+                    
+                    contours, hierarchy = cv2.findContours(im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
                     #cv2.drawContours(im, contours, -1, (0,255,0), 3)
+
                     
-                    if sum(centroid.ravel()) == 0:
-                        print(im.shape)
-                        im = im * 0
+                    
+                    for cnt in contours:
+                        print("f")
+                        x,y,w,h = cv2.boundingRect(cnt)
+                        print(x,y,w,h)
+                        if self.check_edge(x,y,w,h):
+                            cnt_mask = np.zeros_like(im)
+                            cnt_mask[y:y+h,x:x+w] = 1
+                            
+                            # Draw the rectangle
+                            #cv2.rectangle(im,(x,y),(x+w,y+h),(255,255,0),1)
+                            print(im.dtype,cnt_mask.dtype)
+                            assert im.dtype == cnt_mask.dtype 
+                            im = cv2.bitwise_and(im,cnt_mask)
+                        
+                                
+                            
+                            break
                     else:
-                        t = im.copy()
-                        t2 = im.copy() * 0
-                        maxc = max(contours, key = cv2.contourArea)
+                        im*=0
                         
-                        cv2.drawContours(t2, [maxc], -1, 255, 2)
-            
-                        
-                        
-                        cv2.fillPoly(t2, pts =[maxc], color=255)
-                        im = cv2.bitwise_and(t,t2)
-                    
-                    if sum(self.check_corner(im)) != 0:
-                        im *= 0
-               
                 cells.append(im)
-                #plt.imshow(im)
-                #print(sud[r:r+28][:,c:c+28])
-               
+                
         
         
         cells = np.array(cells)
