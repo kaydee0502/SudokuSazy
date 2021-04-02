@@ -271,6 +271,20 @@
 
 
 
+  function waitkarbhai(ms)  {
+
+return new Promise(resolve => {
+
+  setTimeout(() => { resolve('') }, ms);
+})
+
+  }
+
+
+  var time = 50;
+
+
+
 var N = 9;
         function toMat(sud){
          let board = []
@@ -366,7 +380,7 @@ else  {
   }
    
 
-  function SolveSudoku()
+  async function SolveSudoku()
   {
 
 
@@ -401,14 +415,19 @@ else  {
         
               document.getElementById(`cell-${obj.row}${obj.col}`).value= num;
 
+              await waitkarbhai(time);
+
       
          
               // Return, if success
-              if ( SolveSudoku())
+              if (await SolveSudoku())
                   return true;
    
               // Failure, unmake & try again
               board[obj.row][obj.col] = 0;
+              document.getElementById(`cell-${obj.row}${obj.col}`).value= "";
+
+              await waitkarbhai(time);
            
           }
       }
