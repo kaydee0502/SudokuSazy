@@ -64,10 +64,6 @@ class Model:
                     #pad = np.zeros(im.shape)
                     centroid = sud[r+5:r+20][:,c+5:c+20]
                     #plt.imshow(centroid)
-
-
-                    plt.title(sum(centroid.ravel()))
-                    
                     
                     contours, hierarchy = cv2.findContours(im,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
                     #cv2.drawContours(im, contours, -1, (0,255,0), 3)

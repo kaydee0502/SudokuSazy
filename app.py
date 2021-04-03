@@ -31,7 +31,7 @@ cors = CORS(app)
 
 @app.route("/")
 def home():
-    return redirect(url_for("index"))
+    return render_template("main.html")
 
 
 @app.route("/home",methods=["GET","POST"])
@@ -95,6 +95,7 @@ def solve():
 
         return render_template("solve.html",final_sudoku = [{"vals":temp}])
     return "fail"
+
 
 @app.route("/api")
 @cross_origin()

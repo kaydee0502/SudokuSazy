@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  
+
+   <style>
+     html, pre, code, kbd, samp {
+         font-family: 'Press Start 2P', cursive;
+     }
+     body {
+         font-family: 'Press Start 2P', cursive;
+            background-image: url("back.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+}
+     .fc{
+
+      margin:5px;
+      }
+
+      #fbuts{
+            
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+
+      }
+   </style>
+  </head>
+<body>
+
+<h1 style="text-align: center; margin-top: 5%;">Sudoku Sazy</h1>
+
+<div  style = "display: flex;justify-content:center; margin-top:3%; margin-bottom:3%">
+<div id = "fbutsu">
+    <a class="nes-btn is-primary" href="{{ url_for('index') }}" style="margin: 10px;">Scan</a>
+    <a class="nes-btn is-primary" href="#" style="margin: 10px;">Generate</a>
+    
+    </div>
+    
+</div>
+
+
+<section class="nes-container is-dark" style="margin-left: 3%;margin-right: 3%;">
+    <section class="message-list">
+        <section class="message -left">
+          <i class="nes-bcrikko"></i>
+          <!-- Balloon -->
+          <div class="nes-balloon from-left is-dark">
+            <p>Scan a paper cut image of Sudoku, or just generate a new Sudoku template to solve, your choice!</p>
+          </div>
+        </section>
+    </section>
+</section>
+
+  
+<div  style = "display: flex;justify-content:center; margin-top:3%;">
+    <div id = "fbutsl">
+        
+        <a class="nes-btn" href="#" style="margin: 10px;">About us</a>
+        </div>
+        
+    </div>
+    
+
+<script>
+
+
+</script>
+</body>
+</html>
