@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>404</title>
+
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+   <style type="text/css">
+    html, body, pre, code, kbd, samp {
+        font-family: 'Press Start 2P', cursive;
+    }
+    .arrow-right {
+       width: 0; 
+       height: 0; 
+       border-top: 30px solid transparent;
+       border-bottom: 30px solid transparent;
+       margin : 10px;
+       margin-top: auto;
+       margin-bottom :auto;
+       border-left: 30px solid black;
+       };
+
+
+       .clickMe {
+   -moz-appearance: button;
+   -ms-appearance: button;
+   -o-appearance: button;
+   -webkit-appearance: button;
+   appearance: button;
+   text-decoration: none;
+   color: #000;
+   padding: 0.2em 0.4em;
+       }     
+
+
+
+
+    
+
+
+    table {
+      border: 2px solid #000000;
+    }
+
+    td {
+      border: 1px solid #000000;
+      text-align: center;
+      vertical-align: middle;  
+    }
+
+    input {
+      color: #000000;
+      padding: 0;
+      border: 0;
+      text-align: center;
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+      background-color: #FFFFFF;
+      outline: none;
+    }
+
+    input:disabled {
+      background-color: #EEEEEE;
+    }
+
+    #cell-0,  #cell-1,  #cell-2  { border-top:    2px solid #000000; }
+    #cell-2,  #cell-11, #cell-20 { border-right:  2px solid #000000; }
+    #cell-18, #cell-19, #cell-20 { border-bottom: 2px solid #000000; }
+    #cell-0,  #cell-9,  #cell-18 { border-left:   2px solid #000000; }
+
+    #cell-3,  #cell-4,  #cell-5  { border-top:    2px solid #000000; }
+    #cell-5,  #cell-14, #cell-23 { border-right:  2px solid #000000; }
+    #cell-21, #cell-22, #cell-23 { border-bottom: 2px solid #000000; }
+    #cell-3,  #cell-12, #cell-21 { border-left:   2px solid #000000; }
+
+    #cell-6,  #cell-7,  #cell-8  { border-top:    2px solid #000000; }
+    #cell-8,  #cell-17, #cell-26 { border-right:  2px solid #000000; }
+    #cell-24, #cell-25, #cell-26 { border-bottom: 2px solid #000000; }
+    #cell-6,  #cell-15, #cell-24 { border-left:   2px solid #000000; }
+
+    #cell-27, #cell-28, #cell-29 { border-top:    2px solid #000000; }
+    #cell-29, #cell-38, #cell-47 { border-right:  2px solid #000000; }
+    #cell-45, #cell-46, #cell-47 { border-bottom: 2px solid #000000; }
+    #cell-27, #cell-36, #cell-45 { border-left:   2px solid #000000; }
+
+    #cell-30, #cell-31, #cell-32 { border-top:    2px solid #000000; }
+    #cell-32, #cell-41, #cell-50 { border-right:  2px solid #000000; }
+    #cell-48, #cell-49, #cell-50 { border-bottom: 2px solid #000000; }
+    #cell-30, #cell-39, #cell-48 { border-left:   2px solid #000000; }
+
+    #cell-33, #cell-34, #cell-35 { border-top:    2px solid #000000; }
+    #cell-35, #cell-44, #cell-53 { border-right:  2px solid #000000; }
+    #cell-51, #cell-52, #cell-53 { border-bottom: 2px solid #000000; }
+    #cell-33, #cell-42, #cell-51 { border-left:   2px solid #000000; }
+
+    #cell-54, #cell-55, #cell-56 { border-top:    2px solid #000000; }
+    #cell-56, #cell-65, #cell-74 { border-right:  2px solid #000000; }
+    #cell-72, #cell-73, #cell-74 { border-bottom: 2px solid #000000; }
+    #cell-54, #cell-63, #cell-72 { border-left:   2px solid #000000; }
+
+    #cell-57, #cell-58, #cell-59 { border-top:    2px solid #000000; }
+    #cell-59, #cell-68, #cell-77 { border-right:  2px solid #000000; }
+    #cell-75, #cell-76, #cell-77 { border-bottom: 2px solid #000000; }
+    #cell-57, #cell-66, #cell-75 { border-left:   2px solid #000000; }
+
+    #cell-60, #cell-61, #cell-62 { border-top:    2px solid #000000; }
+    #cell-62, #cell-71, #cell-80 { border-right:  2px solid #000000; }
+    #cell-78, #cell-79, #cell-80 { border-bottom: 2px solid #000000; }
+    #cell-60, #cell-69, #cell-78 { border-left:   2px solid #000000; }
+
+  </style>
+  </head>
+  <body>
+
+    <!--template
+    
+     <td><input id="cell-1"  type="text" value="3" disabled></td>
+     <td><input id="cell-2"  type="text"></td>
+    
+    -->
+   <h3 style="text-align: center;margin: 10px;;">Oopsie!</h3>
+    <div class="container" style="display: flex;justify-content:center;">
+      
+        <div class = "nes-container with-title" style="padding-left: 200px;padding-right: 200px;margin-bottom:2%;">
+        <p class="title">You are lost, aren't ya?</p>
+
+        <form action="{{ url_for('solve') }}", method="POST" enctype="multipart/form-data">
+        <table id="grid">
+  
+          <tr>
+            <td><input id="cell-0"  type="text" ></td>
+            <td><input id="cell-1"  type="text" ></td>
+            <td><input id="cell-2"  type="text" ></td>
+            
+            <td><input id="cell-3"  type="text"></td>
+            <td><input id="cell-4"  type="text"></td>
+            <td><input id="cell-5"  type="text"></td>
+            
+            <td><input id="cell-6"  type="text"></td>
+            <td><input id="cell-7"  type="text"></td>
+            <td><input id="cell-8"  type="text"></td>
+          </tr>
+  
+          <tr>
+            <td><input id="cell-9"  type="text"></td>
+            <td><input id="cell-10" type="text"></td>
+            <td><input id="cell-11" type="text"></td>
+            
+            <td><input id="cell-12" type="text" ></td>
+            <td><input id="cell-13" type="text" ></td>
+            <td><input id="cell-14" type="text" ></td>
+            
+            <td><input id="cell-15" type="text"></td>
+            <td><input id="cell-16" type="text"></td>
+            <td><input id="cell-17" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-18" type="text"></td>
+            <td><input id="cell-19" type="text" ></td>
+            <td><input id="cell-20" type="text" ></td>
+            
+            <td><input id="cell-21" type="text"></td>
+            <td><input id="cell-22" type="text"></td>
+            <td><input id="cell-23" type="text"></td>
+            
+            <td><input id="cell-24" type="text"></td>
+            <td><input id="cell-25" type="text"></td>
+            <td><input id="cell-26" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-27" type="text"></td>
+            <td><input id="cell-28" type="text"></td>
+            <td><input id="cell-29" type="text"></td>
+            
+            <td><input id="cell-30" type="text"></td>
+            <td><input id="cell-31" type="text"></td>
+            <td><input id="cell-32" type="text"></td>
+            
+            <td><input id="cell-33" type="text"></td>
+            <td><input id="cell-34" type="text"></td>
+            <td><input id="cell-35" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-36" type="text"></td>
+            <td><input id="cell-37" type="text"></td>
+            <td><input id="cell-38" type="text"></td>
+            
+            <td><input id="cell-39" type="text"></td>
+            <td><input id="cell-40" type="text"></td>
+            <td><input id="cell-41" type="text"></td>
+            
+            <td><input id="cell-42" type="text"></td>
+            <td><input id="cell-43" type="text"></td>
+            <td><input id="cell-44" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-45" type="text"></td>
+            <td><input id="cell-46" type="text"></td>
+            <td><input id="cell-47" type="text"></td>
+            
+            <td><input id="cell-48" type="text"></td>
+            <td><input id="cell-49" type="text"></td>
+            <td><input id="cell-50" type="text"></td>
+            
+            <td><input id="cell-51" type="text"></td>
+            <td><input id="cell-52" type="text"></td>
+            <td><input id="cell-53" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-54" type="text"></td>
+            <td><input id="cell-55" type="text"></td>
+            <td><input id="cell-56" type="text"></td>
+            
+            <td><input id="cell-57" type="text"></td>
+            <td><input id="cell-58" type="text"></td>
+            <td><input id="cell-59" type="text"></td>
+            
+            <td><input id="cell-60" type="text"></td>
+            <td><input id="cell-61" type="text"></td>
+            <td><input id="cell-62" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-63" type="text"></td>
+            <td><input id="cell-64" type="text"></td>
+            <td><input id="cell-65" type="text"></td>
+            
+            <td><input id="cell-66" type="text"></td>
+            <td><input id="cell-67" type="text"></td>
+            <td><input id="cell-68" type="text"></td>
+            
+            <td><input id="cell-69" type="text"></td>
+            <td><input id="cell-70" type="text"></td>
+            <td><input id="cell-71" type="text"></td>
+          </tr>
+  
+          <tr>          
+            <td><input id="cell-72" type="text"></td>
+            <td><input id="cell-73" type="text"></td>
+            <td><input id="cell-74" type="text"></td>
+            
+            <td><input id="cell-75" type="text"></td>
+            <td><input id="cell-76" type="text"></td>
+            <td><input id="cell-77" type="text"></td>
+            
+            <td><input id="cell-78" type="text"></td>
+            <td><input id="cell-79" type="text"></td>
+            <td><input id="cell-80" type="text"></td>
+          </tr>
+          
+          
+        </table>
+        
+  
+      </form>
+    </div>
+  
+      </div>
+  
+     
+     <script>
+        function waitkarbhai(ms)  {
+
+return new Promise(resolve => {
+
+  setTimeout(() => { resolve('') }, ms);
+})
+
+  }
+
+
+  var time = 250;
+  k = {f:1,s:4,t:7}
+  async function Inf(){
+      document.getElementById("cell-"+k.f.toString()).setAttribute("value",4);
+      document.getElementById("cell-"+k.s.toString()).setAttribute("value",0);
+      document.getElementById("cell-"+k.t.toString()).setAttribute("value",4);
+      await waitkarbhai(time);
+      document.getElementById("cell-"+k.f.toString()).setAttribute("value","");
+      document.getElementById("cell-"+k.s.toString()).setAttribute("value","");
+      document.getElementById("cell-"+k.t.toString()).setAttribute("value","");
+      k.f = (k.f + 9)%81;
+      k.s = (k.s + 9)%81;
+      k.t = (k.t + 9)%81;
+      console.log("yes");
+      
+
+      await Inf();
+
+
+  }
+
+  Inf();
+       
+    </script>
+
+  
+
+  </body>
+
+
+  </html>
