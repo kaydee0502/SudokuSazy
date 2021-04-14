@@ -13,16 +13,6 @@
     html, body, pre, code, kbd, samp {
         font-family: 'Press Start 2P', cursive;
     }
-    .arrow-right {
-       width: 0; 
-       height: 0; 
-       border-top: 30px solid transparent;
-       border-bottom: 30px solid transparent;
-       margin : 10px;
-       margin-top: auto;
-       margin-bottom :auto;
-       border-left: 30px solid black;
-       };
 
 
        .clickMe {
@@ -51,6 +41,7 @@
       text-align: center;
       vertical-align: middle;  
     }
+
 
     input {
       color: #000000;
@@ -113,6 +104,18 @@
     #cell-78, #cell-79, #cell-80 { border-bottom: 2px solid #000000; }
     #cell-60, #cell-69, #cell-78 { border-left:   2px solid #000000; }
 
+
+
+    .arrow-right {
+     width: 0; 
+     height: 0; 
+     border-top: 30px solid transparent;
+     border-bottom: 30px solid transparent;
+     margin : 10px;
+     margin-top: auto;
+     margin-bottom :auto;
+     border-left: 30px solid black;
+     };
   </style>
   </head>
   <body>
@@ -124,10 +127,15 @@
     
     -->
    <h3 style="text-align: center;margin: 10px;;">Review and commit corrections</h3>
-    <div class="container" style="display: flex;justify-content:center;">
+    
       
         <div class = "nes-container with-title" style="padding-left: 200px;padding-right: 200px;margin-bottom:2%;">
         <p class="title">Sudoku</p>
+
+        <div class="container" style="display: flex;justify-content:center;">
+        <img src = "{{ output }}" alt = "out" style="width:auto;height:400px;">
+
+        <div class="arrow-right"></div>
 
         <form action="{{ url_for('solve') }}", method="POST" enctype="multipart/form-data">
         <table id="grid">
@@ -260,15 +268,16 @@
           
           
         </table>
+       
         <div id = "fbuts" style="display: flex;justify-content:center;">
           <input type="submit" class="nes-btn is-primary" value = 'Done! Flank ahead!' style="width:100%;margin-top:5%">
         </div>
-  
       </form>
     </div>
+    
   
       </div>
-  
+     
      
      <script>
         var obj = JSON.parse('{{ preds | tojson | safe }}');

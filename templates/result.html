@@ -59,7 +59,7 @@
 
 <div id = "fbuts" style="display: flex;justify-content:center;">
 <a class="nes-btn" href="{{ url_for('index') }}" style="margin: 10px;">Retry</a>
-<a class="nes-btn" href="{{ url_for('res') }}" style="margin: 10px;">Proceed</a>
+<a class="nes-btn" href="{{ url_for('res', output =  out) | safe }}" style="margin: 10px;">Proceed</a>
 </div>
 
 </body>

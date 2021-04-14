@@ -50,6 +50,10 @@ def res():
     if PATH == "":
         # TODO : add custom error mesage - Invalid PATH
         return render_template("index.html")
+    
+    if "output" in request.args:
+        outfile = request.args["output"]
+        
     vmod= vModel(PATH)
     sudoku = vmod.predictions
     sudoku_vals = sudoku.argmax(axis=1)
@@ -62,7 +66,7 @@ def res():
     with open("templates/sudoku.json","w") as f:
        json.dump(suddict,f)
        print("JSON written")
-    return render_template("review.html",preds = [suddict])
+    return render_template("review.html",preds = [suddict],output = outfile)
     
     
     
