@@ -32,9 +32,11 @@ cors = CORS(app)
 @app.route("/")
 def home():
     return render_template("main.html")
+
 @app.errorhandler(404)
-def not_found(e):
-    return render_template("404.html")
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
 
 @app.route("/home",methods=["GET","POST"])
 def index():
@@ -43,6 +45,10 @@ def index():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/generate",methods=["GET","POST"])
+def generate():
+    return render_template("generate.html")
 
 @app.route("/results") 
 def res():
